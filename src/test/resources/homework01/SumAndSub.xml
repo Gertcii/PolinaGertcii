@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Addition and Subtraction calculator tests for double numbers">
+
+    <test name="AdditionTest">
+        <classes>
+            <class name="com.epam.training.center.hw1.CalculatorTests.CalculatorSumDoubleTest"/>
+        </classes>
+    </test>
+
+    <test name="SubtractTest">
+        <classes>
+            <class name="com.epam.training.center.hw1.CalculatorTests.CalculatorSubtractDoubleTest"/>
+        </classes>
+    </test>
+</suite>
+
