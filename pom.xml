@@ -39,12 +39,12 @@
         </profile>
 
         <profile>
-            <id>allTest</id>
+            <id>AllTest</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>${project.basedir}/src/test/resources/homework01/allTtest.xml</suite.file>
+                <suite.file>${project.basedir}/src/test/resources/homework01/AllTest.xml</suite.file>
             </properties>
         </profile>
     </profiles>
