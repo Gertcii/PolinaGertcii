@@ -64,7 +64,7 @@
             <version>1.0</version>
             <scope>system</scope>
             <systemPath>
-                ${project.basedir}/src/test/resources/Calculator/calculator-1.0.jar
+                ${project.basedir}/src/test/resources/calculator/calculator-1.0.jar
             </systemPath>
         </dependency>
     </dependencies>

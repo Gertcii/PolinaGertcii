@@ -9,7 +9,7 @@ public class MultiplyDataProvider {
         return new Object[][]{
                 {Double.MAX_VALUE, 1, Double.MAX_VALUE},
                 {Double.MIN_VALUE, 1, Double.MIN_VALUE},
-                {2.3, 3.9, 8.97},
+                {2, 3, 6},
                 {0.0, 8, 0},
                 {-5.0, 2.0, -10.0}
         };
