@@ -1,8 +1,9 @@
-package com.epam.training.center.hw1.DataProvider;
+package com.epam.training.center.hw1.data_provider;
 
 import org.testng.annotations.DataProvider;
 
 public class SubtractDataProvider {
+
     @DataProvider
     public Object[][] calculatorSubtractDoubleData() {
         return new Object[][]{

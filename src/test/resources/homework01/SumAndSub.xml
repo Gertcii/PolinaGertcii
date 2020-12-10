@@ -3,13 +3,13 @@
 
     <test name="AdditionTest">
         <classes>
-            <class name="com.epam.training.center.hw1.CalculatorTests.CalculatorSumDoubleTest"/>
+            <class name="com.epam.training.center.hw1.calculator_test.CalculatorSumDoubleTest"/>
         </classes>
     </test>
 
     <test name="SubtractTest">
         <classes>
-            <class name="com.epam.training.center.hw1.CalculatorTests.CalculatorSubtractDoubleTest"/>
+            <class name="com.epam.training.center.hw1.calculator_test.CalculatorSubtractDoubleTest"/>
         </classes>
     </test>
 </suite>

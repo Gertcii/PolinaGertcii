@@ -1,8 +1,9 @@
-package com.epam.training.center.hw1.DataProvider;
+package com.epam.training.center.hw1.data_provider;
 
 import org.testng.annotations.DataProvider;
 
 public class DivisionDataProvider {
+
     @DataProvider
     public Object[][] calculatorDivisionDoubleData() {
         return new Object[][]{

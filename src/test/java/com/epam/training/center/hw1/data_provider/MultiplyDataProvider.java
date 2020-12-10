@@ -1,8 +1,9 @@
-package com.epam.training.center.hw1.DataProvider;
+package com.epam.training.center.hw1.data_provider;
 
 import org.testng.annotations.DataProvider;
 
 public class MultiplyDataProvider {
+
     @DataProvider
     public Object[][] calculatorMultiplyDoubleData() {
         return new Object[][]{

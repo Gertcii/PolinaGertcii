@@ -1,10 +1,11 @@
-package com.epam.training.center.hw1.DataProvider;
+package com.epam.training.center.hw1.data_provider;
 
 import org.testng.annotations.DataProvider;
 
-public class IsPositiveDataProvider {
+public class PositiveNumberDataProvider {
+
     @DataProvider
-    public Object[][] calculatorIsPositiveData() {
+    public Object[][] calculatorPositiveData() {
         return new Object[][]{
                 {1, true},
                 {-1, false},

@@ -1,34 +1,20 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite name="Calculator all test">
 
-    <test name="Add test">
-        <classes>
-            <class name="com.epam.training.center.hw1.CalculatorTests.CalculatorSumDoubleTest"/>
-        </classes>
-    </test>
-    <test name="Subtract test">
-        <classes>
-            <class name="com.epam.training.center.hw1.CalculatorTests.CalculatorSubtractDoubleTest"/>
-        </classes>
-    </test>
-    <test name="Multiply test">
-        <classes>
-            <class name="com.epam.training.center.hw1.CalculatorTests.CalculatorMultiplyDoubleTest"/>
-        </classes>
-    </test>
-    <test name="Division test">
-        <classes>
-            <class name="com.epam.training.center.hw1.CalculatorTests.CalculatorDivisionDoubleTest"/>
-        </classes>
-    </test>
+    <suite-files>
+        <suite-file path="MultAndDiv.xml"/>
+        <suite-file path="SumAndSub.xml"/>
+    </suite-files>
+
     <test name="Pow test">
         <classes>
-            <class name="com.epam.training.center.hw1.CalculatorTests.CalculatorPowDoubleTest"/>
+            <class name="com.epam.training.center.hw1.calculator_test.CalculatorPowDoubleTest"/>
         </classes>
     </test>
+
     <test name="IsPositive test">
         <classes>
-            <class name="com.epam.training.center.hw1.CalculatorTests.CalculatorIsPositiveTest"/>
+            <class name="com.epam.training.center.hw1.calculator_test.CalculatorPositiveNumbersTest"/>
         </classes>
     </test>
 </suite>
