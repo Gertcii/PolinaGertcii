@@ -14,8 +14,9 @@
         <maven.compiler.plugin.source>1.8</maven.compiler.plugin.source>
         <maven.compiler.plugin.target>1.8</maven.compiler.plugin.target>
         <maven.surefire.plugin.version>3.0.0-M5</maven.surefire.plugin.version>
+        <selenium.java.version>3.141.59</selenium.java.version>
+        <webdrivermanager.version>4.2.2</webdrivermanager.version>
     </properties>
-
 
     <profiles>
         <profile>
@@ -47,8 +48,17 @@
                 <suite.file>${project.basedir}/src/test/resources/homework01/AllTest.xml</suite.file>
             </properties>
         </profile>
-    </profiles>
 
+        <profile>
+            <id>Hw2</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>${project.basedir}/src/test/resources/homework02/TestNG.xml</suite.file>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>
@@ -67,8 +77,20 @@
                 ${project.basedir}/src/test/resources/calculator/calculator-1.0.jar
             </systemPath>
         </dependency>
-    </dependencies>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.java.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+        </dependency>
 
+    </dependencies>
 
     <build>
         <plugins>
@@ -96,6 +118,5 @@
             </plugin>
         </plugins>
     </build>
-
 
 </project>
