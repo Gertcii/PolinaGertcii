@@ -113,38 +113,38 @@ public class IndexPageTest extends BaseTest {
         Assert that there are 5 items in the Left Section are displayed
         Data - 5
         */
-        int leftNavBarItems = searchElementsList(By.cssSelector("ul.sidebar-menu > li")).size();
+        int leftNavBarItems = searchElementsList(By.cssSelector(".sidebar-menu > li")).size();
         softAssert.assertEquals(leftNavBarItems, 5);
-        softAssert.assertTrue(allElementsIsDisplayed(By.cssSelector("ul.sidebar-menu > li")));
+        softAssert.assertTrue(allElementsIsDisplayed(By.cssSelector(".sidebar-menu > li")));
         /*Exercise 1. #11.1
         Assert that 5 items in the Left Section have proper text
         Data - “Home”
         */
-        String homeBtnLeftNav = elementText(By.cssSelector("#mCSB_1_container > ul > li.active"));
+        String homeBtnLeftNav = elementText(By.cssSelector(".sidebar-menu > li.active"));
         softAssert.assertEquals(homeBtnLeftNav, "Home");
         /*Exercise 1. #11.2
         Assert that 5 items in the Left Section have proper text
         Data - “Contact form”
         */
-        String contactFormBtnLeftNav = elementText(By.cssSelector("#mCSB_1_container > ul > li:nth-child(2)"));
+        String contactFormBtnLeftNav = elementText(By.cssSelector(".sidebar-menu > li:nth-child(2)"));
         softAssert.assertEquals(contactFormBtnLeftNav, "Contact form");
         /*Exercise 1. #11.3
         Assert that 5 items in the Left Section have proper text
         Data - “Service”
         */
-        String serviceFormBtnLeftNav = elementText(By.cssSelector("#mCSB_1_container > ul > li:nth-child(3)"));
+        String serviceFormBtnLeftNav = elementText(By.cssSelector(".sidebar-menu > li:nth-child(3)"));
         softAssert.assertEquals(serviceFormBtnLeftNav, "Service");
         /*Exercise 1. #11.4
         Assert that 5 items in the Left Section have proper text
         Data - “Metals & Colors”
         */
-        String metalsColorsFormBtnLeftNav = elementText(By.cssSelector("#mCSB_1_container > ul > li:nth-child(4)"));
+        String metalsColorsFormBtnLeftNav = elementText(By.cssSelector(".sidebar-menu > li:nth-child(4)"));
         softAssert.assertEquals(metalsColorsFormBtnLeftNav, "Metals & Colors");
         /*Exercise 1. #11.5
         Assert that 5 items in the Left Section have proper text
         Data - “Elements packs”
         */
-        String elementsPacksFormBtnLeftNav = elementText(By.cssSelector("#mCSB_1_container > ul > li:nth-child(5)"));
+        String elementsPacksFormBtnLeftNav = elementText(By.cssSelector(".sidebar-menu > li:nth-child(5)"));
         softAssert.assertEquals(elementsPacksFormBtnLeftNav, "Elements packs");
 
         softAssert.assertAll();
