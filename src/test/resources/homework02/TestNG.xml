@@ -2,12 +2,12 @@
 <suite name="Selenium test">
     <test name="Exercise 1">
         <classes>
-            <class name="com.epam.training.center.hw2.ex1.IndexPageTest"/>
+            <class name="com.epam.training.center.hw2.ex1.HomePageTest"/>
         </classes>
     </test>
     <test name="Exercise 2">
         <classes>
-            <class name="com.epam.training.center.hw2.ex2.IndexTest"/>
+            <class name="com.epam.training.center.hw2.ex2.HomeAndDifferentElementsPagesTest"/>
         </classes>
     </test>
 </suite>

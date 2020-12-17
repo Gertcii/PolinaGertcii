@@ -6,13 +6,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class IndexTest extends BaseTest {
-
-    private String URL = "https://jdi-testing.github.io/jdi-light/index.html";
+public class HomeAndDifferentElementsPagesTest extends BaseTest {
 
     @Test(priority = 1, description = "open page and assert Home Page")
 
-    public void homePageTest() {
+    public void checkingHomeAndDifferentElementsPagesElements() {
 
         SoftAssert softAssert = new SoftAssert();
 
@@ -20,7 +18,7 @@ public class IndexTest extends BaseTest {
         open page
         Data - "https://jdi-testing.github.io/jdi-light/index.html"
          */
-        openPage(URL);
+        openMainPage();
         /*Ex_2 #2
         assert title
         Data - "Home Page"
@@ -69,7 +67,7 @@ public class IndexTest extends BaseTest {
          */
         int numberOfLogRow = searchElementsList(By.cssSelector(".panel-body-list.logs > li")).size();
         Assert.assertEquals(numberOfLogRow, 4);
-        Assert.assertTrue(allElementsIsDisplayed(By.cssSelector(".panel-body-list.logs > li")));
+        Assert.assertTrue(allElementsAreDisplayed(By.cssSelector(".panel-body-list.logs > li")));
         /*Ex_2 #9.1
         Assert that for each checkbox there is an individual log row
         and value is corresponded to the status of checkbox
