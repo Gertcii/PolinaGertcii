@@ -20,6 +20,7 @@ public abstract class BaseTest {
 
     @BeforeTest
     public void browsedSetUp() {
+        System.setProperty("webdriver.chrome.driver", "src/test/java/com/epam/training/center/hw2/driver/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
