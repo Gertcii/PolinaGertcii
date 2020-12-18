@@ -11,7 +11,6 @@ import java.util.List;
 public abstract class BaseTest {
 
     protected WebDriver driver;
-    protected String URL = "https://jdi-testing.github.io/jdi-light/index.html";
 
     public BaseTest(WebDriver driver) {
         this.driver = driver;
