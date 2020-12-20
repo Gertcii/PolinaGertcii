@@ -41,7 +41,7 @@ public class HomeAndDifferentElementsPagesTest {
         assert title
         Data - "Home Page"
          */
-        ex2HomePage.openPage(driver, ConfigProperties.getProperty("url"), TestData.HOME_PAGE_TITLE.getValue());
+        ex2HomePage.openPage(ConfigProperties.getProperty("url"), TestData.HOME_PAGE_TITLE.getValue());
         /*Ex_2 #3 #4
         perform login, assert user name
         Data - login: Roman      pass: Jdi1234

@@ -17,7 +17,7 @@ public abstract class BaseTest {
         PageFactory.initElements(driver, this);
     }
 
-    public void openPage(WebDriver driver, String URL, String title) {
+    public void openPage(String URL, String title) {
         driver.get(URL);
         Assert.assertEquals(driver.getTitle(), title);
     }

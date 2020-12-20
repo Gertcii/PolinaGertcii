@@ -43,7 +43,7 @@ public class Ex1HomePageTest {
         assert title
         Data - "Home Page"
          */
-        ex1HomePage.openPage(driver, ConfigProperties.getProperty("url"), TestData.HOME_PAGE_TITLE.getValue());
+        ex1HomePage.openPage(ConfigProperties.getProperty("url"), TestData.HOME_PAGE_TITLE.getValue());
         /*Ex_1 #3 #4
         perform login, assert user name
         Data - login: Roman      pass: Jdi1234
