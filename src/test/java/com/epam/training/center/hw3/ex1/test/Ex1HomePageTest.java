@@ -2,35 +2,10 @@ package com.epam.training.center.hw3.ex1.test;
 
 import com.epam.training.center.hw3.ConfigProperties;
 import com.epam.training.center.hw3.TestData;
-import com.epam.training.center.hw3.ex1.page.Ex1HomePage;
-import com.epam.training.center.hw3.ex1.page.Ex1LeftNavigationBar;
-import com.epam.training.center.hw3.ex1.page.Ex1TopNavigationBar;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
 
-public class Ex1HomePageTest {
-
-    private WebDriver driver;
-    private Ex1HomePage ex1HomePage;
-    private Ex1TopNavigationBar ex1TopNavigationBar;
-    private Ex1LeftNavigationBar ex1LeftNavigationBar;
-
-    @BeforeTest
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/driver/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        ex1HomePage = new Ex1HomePage(driver);
-        ex1TopNavigationBar = new Ex1TopNavigationBar(driver);
-        ex1LeftNavigationBar = new Ex1LeftNavigationBar(driver);
-
-    }
+public class Ex1HomePageTest extends Ex1BaseTest {
 
     @Test
     public void checkingHomePagesElements() {
@@ -148,12 +123,4 @@ public class Ex1HomePageTest {
         ex1LeftNavigationBar.leftElementsPackNavBtnHaveProperText(TestData.ELEMENTS_PACKS_LEFT_BTN.getValue());
     }
 
-    @AfterTest
-    public void tearDown() {
-        driver.quit();
-        driver = null;
-        ex1HomePage = null;
-        ex1TopNavigationBar = null;
-        ex1LeftNavigationBar = null;
-    }
 }

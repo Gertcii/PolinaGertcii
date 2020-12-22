@@ -2,34 +2,9 @@ package com.epam.training.center.hw3.ex2.test;
 
 import com.epam.training.center.hw3.ConfigProperties;
 import com.epam.training.center.hw3.TestData;
-import com.epam.training.center.hw3.ex2.page.Ex2DifferentElementsPage;
-import com.epam.training.center.hw3.ex2.page.Ex2HomePage;
-import com.epam.training.center.hw3.ex2.page.Ex2TopNavigationBar;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
-
-public class HomeAndDifferentElementsPagesTest {
-
-    private WebDriver driver;
-    private Ex2HomePage ex2HomePage;
-    private Ex2DifferentElementsPage ex2DifferentElementsPage;
-    private Ex2TopNavigationBar ex2TopNavigationBar;
-
-    @BeforeTest
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/driver/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        ex2HomePage = new Ex2HomePage(driver);
-        ex2TopNavigationBar = new Ex2TopNavigationBar(driver);
-        ex2DifferentElementsPage = new Ex2DifferentElementsPage(driver);
-    }
+public class HomeAndDifferentElementsPagesTest extends Ex2BaseTest {
 
     @Test
     public void checkingHomeAndDifferentElementsPagesElements() {
@@ -111,12 +86,5 @@ public class HomeAndDifferentElementsPagesTest {
 
     }
 
-    @AfterTest
-    public void tearDown() {
-        driver.quit();
-        driver = null;
-        ex2HomePage = null;
-        ex2TopNavigationBar = null;
-        ex2DifferentElementsPage = null;
-    }
+
 }

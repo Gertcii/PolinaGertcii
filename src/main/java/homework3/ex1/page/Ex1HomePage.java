@@ -1,13 +1,12 @@
-package com.epam.training.center.hw3.ex1.page;
+package homework3.ex1.page;
 
-import com.epam.training.center.hw3.BaseTest;
+import homework3.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import java.util.List;
 
-public class Ex1HomePage extends BaseTest {
+public class Ex1HomePage extends BasePage {
 
     private WebDriver driver;
 
@@ -39,7 +38,6 @@ public class Ex1HomePage extends BaseTest {
     private WebElement frameField;
     @FindBy(id = "button-frame")
     private WebElement frameBtn;
-
 
     public Ex1HomePage(WebDriver driver) {
         super(driver);

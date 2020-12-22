@@ -1,29 +1,23 @@
 package com.epam.training.center.hw3;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigProperties {
 
-    protected static FileInputStream fileInputStream;
-    protected static Properties PROPERTIES;
+    final static Properties PROPERTIES = new Properties();
 
     static {
-        try {
-            fileInputStream = new FileInputStream("src/test/java/com/epam/training/center/hw3/resources/config.properties");
-            PROPERTIES = new Properties();
-            PROPERTIES.load(fileInputStream);
+        try (FileInputStream fis =
+                     new FileInputStream(
+                             "src/test/resources/homework03/resources/config.properties")) {
+            PROPERTIES.load(fis);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (fileInputStream != null) {
-                try {
-                    fileInputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
     }
 

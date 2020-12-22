@@ -1,13 +1,13 @@
-package com.epam.training.center.hw3.ex2.page;
+package homework3.ex2.page;
 
-import com.epam.training.center.hw3.BaseTest;
+import homework3.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class Ex2DifferentElementsPage extends BaseTest {
+public class Ex2DifferentElementsPage extends BasePage {
 
     @FindBy(css = "label:nth-child(1) > input[type=checkbox]")
     private WebElement waterCheckbox;
@@ -21,6 +21,7 @@ public class Ex2DifferentElementsPage extends BaseTest {
     private WebElement yellowColor;
     @FindBy(css = ".panel-body-list.logs > li")
     private List<WebElement> logRowBlock;
+
     public Ex2DifferentElementsPage(WebDriver driver) {
         super(driver);
     }

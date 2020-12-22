@@ -1,13 +1,12 @@
-package com.epam.training.center.hw3.ex2.page;
+package homework3.ex2.page;
 
-import com.epam.training.center.hw3.BaseTest;
+import homework3.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import java.util.List;
 
-public class Ex2TopNavigationBar extends BaseTest {
+public class Ex2TopNavigationBar extends BasePage {
 
     @FindBy(css = ".m-l8 > li")
     private List<WebElement> topNavBar;

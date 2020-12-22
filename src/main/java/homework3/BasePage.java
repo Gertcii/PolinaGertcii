@@ -1,18 +1,17 @@
-package com.epam.training.center.hw3;
+package homework3;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
 import java.util.List;
 
-public abstract class BaseTest {
+public abstract class BasePage {
 
     protected WebDriver driver;
 
-    public BaseTest(WebDriver driver) {
+    public BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -33,7 +32,6 @@ public abstract class BaseTest {
     public void allElementsAreDisplayed(List<WebElement> elementList) {
 
         boolean result = elementList.stream().anyMatch(element -> !element.isDisplayed());
-
         Assert.assertFalse(result);
     }
 
