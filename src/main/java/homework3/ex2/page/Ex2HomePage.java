@@ -1,18 +1,14 @@
 package homework3.ex2.page;
 
 import homework3.BasePage;
+import homework3.page_components.TopNavigationBar;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class Ex2HomePage extends BasePage {
 
-    private WebDriver driver;
-
-    public Ex2HomePage(WebDriver driver) {
-        super(driver);
-    }
-
+    private TopNavigationBar topNavBar = new TopNavigationBar(driver);
 
     @FindBy(id = "user-icon")
     private WebElement userIcon;
@@ -25,6 +21,10 @@ public class Ex2HomePage extends BasePage {
     @FindBy(id = "user-name")
     private WebElement userName;
 
+    public Ex2HomePage(WebDriver driver) {
+        super(driver);
+    }
+
     public Ex2HomePage login(String login, String password) {
         userIcon.click();
         loginField.sendKeys(login);
@@ -36,6 +36,12 @@ public class Ex2HomePage extends BasePage {
     public Ex2HomePage isRightUserName(String expectedUserName) {
         equalsText(userName, expectedUserName);
         return this;
+    }
+
+    public Ex2DifferentElementsPage navigateToPageByDiffElBtn(String pageName) {
+        navigateToPageViaTopServiceMenu(topNavBar.getServiceTopNavBtn(),
+                topNavBar.getDifferentElementsBtn(), pageName);
+        return new Ex2DifferentElementsPage(driver);
     }
 
 }

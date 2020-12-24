@@ -18,6 +18,7 @@ public enum TestData {
     ELEMENTS_PACKS_LEFT_BTN("Elements packs"),
     FRAME_ID("frame"),
     DIFFERENT_ELEMENTS_TITLE("Different Elements"),
+    YELLOW("Yellow"),
     LOG_ROWS_NUMBER(4),
     WATER_ROW_TEXT("Water: condition changed to true"),
     WIND_ROW_TEXT("Wind: condition changed to true"),

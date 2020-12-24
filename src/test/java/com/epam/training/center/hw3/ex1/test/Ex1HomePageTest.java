@@ -1,14 +1,17 @@
 package com.epam.training.center.hw3.ex1.test;
 
+import com.epam.training.center.hw3.BaseTest;
 import com.epam.training.center.hw3.ConfigProperties;
 import com.epam.training.center.hw3.TestData;
+import homework3.ex1.page.Ex1HomePage;
 import org.testng.annotations.Test;
 
-
-public class Ex1HomePageTest extends Ex1BaseTest {
+public class Ex1HomePageTest extends BaseTest {
 
     @Test
     public void checkingHomePagesElements() {
+
+        ex1HomePage = new Ex1HomePage(driver);
 
         /*Ex_1 #1
         open page
@@ -34,27 +37,27 @@ public class Ex1HomePageTest extends Ex1BaseTest {
         Assert that there are 4 items on the header section and they are displayed
         Data - 4
         */
-        ex1TopNavigationBar.topNavBtnHaveProperNumberAndAreDisplayed(TestData.TOP_NAV_ELEMENT_AMOUNT.getAmount());
+        ex1HomePage.topNavBtnHaveProperNumberAndAreDisplayed(TestData.TOP_NAV_ELEMENT_AMOUNT.getAmount());
         /* Exercise 1. #5.1
         Assert that 4 items on the header section have proper text
         Data - HOME
         */
-        ex1TopNavigationBar.topHomeBtnHasProperText(TestData.HOME_TOP_BTN.getValue());
+        ex1HomePage.topHomeBtnHasProperText(TestData.HOME_TOP_BTN.getValue());
         /* Exercise 1. #5.2
         Assert that 4 items on the header section have proper text
         Data - "CONTACT FORM"
         */
-        ex1TopNavigationBar.topContactBtnHasProperText(TestData.CONTACT_TOP_BTN.getValue());
+        ex1HomePage.topContactBtnHasProperText(TestData.CONTACT_TOP_BTN.getValue());
         /* Exercise 1. #5.3
         Assert that 4 items on the header section have proper text
         Data - "SERVICE"
         */
-        ex1TopNavigationBar.topServiceBtnHasProperText(TestData.SERVICE_TOP_BTN.getValue());
+        ex1HomePage.topServiceBtnHasProperText(TestData.SERVICE_TOP_BTN.getValue());
         /* Exercise 1. #5.4
         Assert that 4 items on the header section have proper text
         Data - METALS & COLORS
         */
-        ex1TopNavigationBar.topMetalAndColorsBtnHasProperText(TestData.METALS_AND_COLORS_TOP_BTN.getValue());
+        ex1HomePage.topMetalAndColorsBtnHasProperText(TestData.METALS_AND_COLORS_TOP_BTN.getValue());
         /* Exercise 1. #6
         Assert that there are 4 images on the Index Page
         Data - 4
@@ -95,32 +98,32 @@ public class Ex1HomePageTest extends Ex1BaseTest {
         Assert that there are 5 items in the Left Section are displayed
         Data - 5
         */
-        ex1LeftNavigationBar.leftNavBtnHaveProperNumberAndAreDisplayed(TestData.LEFT_NAV_ELEMENTS_AMOUNT.getAmount());
+        ex1HomePage.leftNavBtnHaveProperNumberAndAreDisplayed(TestData.LEFT_NAV_ELEMENTS_AMOUNT.getAmount());
         /*Exercise 1. #11.1
         Assert that 5 items in the Left Section have proper text
         Data - “Home”
         */
-        ex1LeftNavigationBar.leftHomeNavBtnHaveProperText(TestData.HOME_LEFT_BTN.getValue());
+        ex1HomePage.leftHomeNavBtnHaveProperText(TestData.HOME_LEFT_BTN.getValue());
         /*Exercise 1. #11.2
         Assert that 5 items in the Left Section have proper text
         Data - “Contact form”
         */
-        ex1LeftNavigationBar.leftContactNavBtnHaveProperText(TestData.CONTACT_LEFT_BTN.getValue());
+        ex1HomePage.leftContactNavBtnHaveProperText(TestData.CONTACT_LEFT_BTN.getValue());
         /*Exercise 1. #11.3
         Assert that 5 items in the Left Section have proper text
         Data - “Service”
         */
-        ex1LeftNavigationBar.leftServiceNavBtnHaveProperText(TestData.SERVICE_LEFT_BTN.getValue());
+        ex1HomePage.leftServiceNavBtnHaveProperText(TestData.SERVICE_LEFT_BTN.getValue());
         /*Exercise 1. #11.4
         Assert that 5 items in the Left Section have proper text
         Data - “Metals & Colors”
         */
-        ex1LeftNavigationBar.leftMetalAndColorsNavBtnHaveProperText(TestData.METALS_AND_COLORS_LEFT_BTN.getValue());
+        ex1HomePage.leftMetalAndColorsNavBtnHaveProperText(TestData.METALS_AND_COLORS_LEFT_BTN.getValue());
         /*Exercise 1. #11.5
         Assert that 5 items in the Left Section have proper text
         Data - “Elements packs”
         */
-        ex1LeftNavigationBar.leftElementsPackNavBtnHaveProperText(TestData.ELEMENTS_PACKS_LEFT_BTN.getValue());
+        ex1HomePage.leftElementsPackNavBtnHaveProperText(TestData.ELEMENTS_PACKS_LEFT_BTN.getValue());
     }
 
 }

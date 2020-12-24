@@ -1,13 +1,21 @@
 package com.epam.training.center.hw3.ex2.test;
 
+import com.epam.training.center.hw3.BaseTest;
 import com.epam.training.center.hw3.ConfigProperties;
 import com.epam.training.center.hw3.TestData;
+import homework3.ex2.page.Ex2DifferentElementsPage;
+import homework3.ex2.page.Ex2HomePage;
 import org.testng.annotations.Test;
 
-public class HomeAndDifferentElementsPagesTest extends Ex2BaseTest {
+public class HomeAndDifferentElementsPagesTest extends BaseTest {
 
     @Test
     public void checkingHomeAndDifferentElementsPagesElements() {
+
+        ex2HomePage = new Ex2HomePage(driver);
+        ex2DifferentElementsPage = new Ex2DifferentElementsPage(driver);
+
+        ex2DifferentElementsPage = new Ex2DifferentElementsPage(driver);
         /*Ex_2 #1
         open page
         Data - "https://jdi-testing.github.io/jdi-light/index.html"
@@ -32,7 +40,7 @@ public class HomeAndDifferentElementsPagesTest extends Ex2BaseTest {
         Open through the header menu Service -> Different Elements Page
         Data -
          */
-        ex2TopNavigationBar.navigateToPageByDiffElBtn(TestData.DIFFERENT_ELEMENTS_TITLE.getValue());
+        ex2HomePage.navigateToPageByDiffElBtn(TestData.DIFFERENT_ELEMENTS_TITLE.getValue());
         /*Ex_2 #6
         Select checkboxes
         Data -	 Water
@@ -55,8 +63,7 @@ public class HomeAndDifferentElementsPagesTest extends Ex2BaseTest {
         Select in dropdown
         Data -	Yellow
          */
-        ex2DifferentElementsPage.clickColorMenu();
-        ex2DifferentElementsPage.clickYellowColor();
+        ex2DifferentElementsPage.selectColor(TestData.YELLOW.getValue());
         ex2DifferentElementsPage.yellowColorIsSelected();
         /*Ex_2 #9.
         Assert that for each checkbox there is an individual log row
@@ -85,6 +92,4 @@ public class HomeAndDifferentElementsPagesTest extends Ex2BaseTest {
         ex2DifferentElementsPage.rowIsDisplayed(TestData.YELLOW_ROW_TEXT.getValue());
 
     }
-
-
 }

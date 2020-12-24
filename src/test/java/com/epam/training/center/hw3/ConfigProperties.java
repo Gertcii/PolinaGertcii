@@ -12,7 +12,7 @@ public class ConfigProperties {
     static {
         try (FileInputStream fis =
                      new FileInputStream(
-                             "src/test/resources/homework03/resources/config.properties")) {
+                             "src/test/java/com/epam/training/center/hw3/resources/config.properties")) {
             PROPERTIES.load(fis);
         } catch (FileNotFoundException e) {
             e.printStackTrace();

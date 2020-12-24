@@ -1,6 +1,7 @@
 package homework3.ex2.page;
 
 import homework3.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,15 +10,15 @@ import java.util.List;
 
 public class Ex2DifferentElementsPage extends BasePage {
 
-    @FindBy(css = "label:nth-child(1) > input[type=checkbox]")
+    @FindBy(xpath = "//label[contains(. ,'Water')]/input")
     private WebElement waterCheckbox;
-    @FindBy(css = "label:nth-child(3) > input[type=checkbox]")
+    @FindBy(xpath = "//label[contains(. ,'Wind')]/input")
     private WebElement windCheckbox;
-    @FindBy(css = "label:nth-child(4) > input[type=radio]")
+    @FindBy(xpath = "//label[contains(. ,'Selen')]/input")
     private WebElement selenRadio;
     @FindBy(className = "colors")
     private WebElement colorMenu;
-    @FindBy(css = ".colors > select > option:nth-child(4)")
+    @FindBy(xpath = "//option[contains(.,'Yellow')]")
     private WebElement yellowColor;
     @FindBy(css = ".panel-body-list.logs > li")
     private List<WebElement> logRowBlock;
@@ -56,13 +57,12 @@ public class Ex2DifferentElementsPage extends BasePage {
         return this;
     }
 
-    public Ex2DifferentElementsPage clickColorMenu() {
+    public Ex2DifferentElementsPage selectColor(String color) {
         colorMenu.click();
-        return this;
-    }
-
-    public Ex2DifferentElementsPage clickYellowColor() {
-        yellowColor.click();
+        String xpathExpression = String
+                .format("//option[contains(.,'%s')]", color);
+        WebElement colorElement = driver.findElement(By.xpath(xpathExpression));
+        colorElement.click();
         return this;
     }
 
