@@ -1,6 +1,5 @@
-package homework3.ex1.page;
+package homework3;
 
-import homework3.BasePage;
 import homework3.page_components.LeftNavigationBar;
 import homework3.page_components.TopNavigationBar;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class Ex1HomePage extends BasePage {
+public class HomePage extends BasePage {
 
     private LeftNavigationBar leftNavBar = new LeftNavigationBar(driver);
     private TopNavigationBar topNavBar = new TopNavigationBar(driver);
@@ -41,11 +40,11 @@ public class Ex1HomePage extends BasePage {
     @FindBy(id = "button-frame")
     private WebElement frameBtn;
 
-    public Ex1HomePage(WebDriver driver) {
+    public HomePage(WebDriver driver) {
         super(driver);
     }
 
-    public Ex1HomePage login(String login, String password) {
+    public HomePage login(String login, String password) {
         userIcon.click();
         loginField.sendKeys(login);
         passwordField.sendKeys(password);
@@ -53,118 +52,124 @@ public class Ex1HomePage extends BasePage {
         return this;
     }
 
-    public Ex1HomePage isRightUserName(String expectedUserName) {
+    public HomePage isRightUserName(String expectedUserName) {
         equalsText(userName, expectedUserName);
         return this;
     }
 
-    public Ex1HomePage topNavBtnHaveProperNumberAndAreDisplayed(int expectedAmount) {
+    public HomePage topNavBtnHaveProperNumberAndAreDisplayed(int expectedAmount) {
         elementsHaveProperNumber(topNavBar.getTopNavBar(), expectedAmount);
         allElementsAreDisplayed(topNavBar.getTopNavBar());
         return this;
     }
 
-    public Ex1HomePage topHomeBtnHasProperText(String expectedText) {
+    public HomePage topHomeBtnHasProperText(String expectedText) {
         equalsText(topNavBar.getHomeTopNavBtn(), expectedText);
         return this;
     }
 
-    public Ex1HomePage topContactBtnHasProperText(String expectedText) {
+    public HomePage topContactBtnHasProperText(String expectedText) {
         equalsText(topNavBar.getContactTopNavBtn(), expectedText);
         return this;
     }
 
-    public Ex1HomePage topServiceBtnHasProperText(String expectedText) {
+    public HomePage topServiceBtnHasProperText(String expectedText) {
         equalsText(topNavBar.getServiceTopNavBtn(), expectedText);
         return this;
     }
 
-    public Ex1HomePage topMetalAndColorsBtnHasProperText(String expectedText) {
+    public HomePage topMetalAndColorsBtnHasProperText(String expectedText) {
         equalsText(topNavBar.getMetalAndColorsTopNavBtn(), expectedText);
         return this;
     }
 
-    public Ex1HomePage allIconsAreDisplayedAndHaveProperAmount(int expectedAmount) {
+    public HomePage allIconsAreDisplayedAndHaveProperAmount(int expectedAmount) {
         elementsHaveProperNumber(benefitIcons, expectedAmount);
         allElementsAreDisplayed(benefitIcons);
         return this;
     }
 
-    public Ex1HomePage allBenefitTextsAreDisplayedAndHaveProperAmount(int expectedAmount) {
+    public HomePage allBenefitTextsAreDisplayedAndHaveProperAmount(int expectedAmount) {
         elementsHaveProperNumber(benefitText, expectedAmount);
         allElementsAreDisplayed(benefitText);
         return this;
     }
 
-    public Ex1HomePage textBelowIcon1IsDisplayed() {
+    public HomePage textBelowIcon1IsDisplayed() {
         elementIsDisplayed(textBelowIcon1);
         return this;
     }
 
-    public Ex1HomePage textBelowIcon2IsDisplayed() {
+    public HomePage textBelowIcon2IsDisplayed() {
         elementIsDisplayed(textBelowIcon2);
         return this;
     }
 
-    public Ex1HomePage textBelowIcon3IsDisplayed() {
+    public HomePage textBelowIcon3IsDisplayed() {
         elementIsDisplayed(textBelowIcon3);
         return this;
     }
 
-    public Ex1HomePage textBelowIcon4IsDisplayed() {
+    public HomePage textBelowIcon4IsDisplayed() {
         elementIsDisplayed(textBelowIcon4);
         return this;
     }
 
-    public Ex1HomePage frameElementIsDisplayed() {
+    public HomePage frameElementIsDisplayed() {
         elementIsDisplayed(frameField);
         return this;
     }
 
-    public Ex1HomePage switchToFrame(WebDriver driver, String frameId) {
+    public HomePage switchToFrame(WebDriver driver, String frameId) {
         driver.switchTo().frame(frameId);
         return this;
     }
 
-    public Ex1HomePage frameBtnIsDisplayed() {
+    public HomePage frameBtnIsDisplayed() {
         elementIsDisplayed(frameBtn);
         return this;
     }
 
-    public Ex1HomePage switchToOriginalWindow(WebDriver driver) {
+    public HomePage switchToOriginalWindow(WebDriver driver) {
         driver.switchTo().defaultContent();
         return this;
     }
 
-    public Ex1HomePage leftNavBtnHaveProperNumberAndAreDisplayed(int expectedAmount) {
+    public HomePage leftNavBtnHaveProperNumberAndAreDisplayed(int expectedAmount) {
         elementsHaveProperNumber(leftNavBar.getLeftNavBar(), expectedAmount);
         allElementsAreDisplayed(leftNavBar.getLeftNavBar());
         return this;
     }
 
-    public Ex1HomePage leftHomeNavBtnHaveProperText(String expectedText) {
+    public HomePage leftHomeNavBtnHaveProperText(String expectedText) {
         equalsText(leftNavBar.getLeftHomeNavBtn(), expectedText);
         return this;
     }
 
-    public Ex1HomePage leftContactNavBtnHaveProperText(String expectedText) {
+    public HomePage leftContactNavBtnHaveProperText(String expectedText) {
         equalsText(leftNavBar.getLeftContactNavBtn(), expectedText);
         return this;
     }
 
-    public Ex1HomePage leftServiceNavBtnHaveProperText(String expectedText) {
+    public HomePage leftServiceNavBtnHaveProperText(String expectedText) {
         equalsText(leftNavBar.getLeftServiceNavBtn(), expectedText);
         return this;
     }
 
-    public Ex1HomePage leftMetalAndColorsNavBtnHaveProperText(String expectedText) {
+    public HomePage leftMetalAndColorsNavBtnHaveProperText(String expectedText) {
         equalsText(leftNavBar.getLeftMetalAndColorsNavBtn(), expectedText);
         return this;
     }
 
-    public Ex1HomePage leftElementsPackNavBtnHaveProperText(String expectedText) {
+    public HomePage leftElementsPackNavBtnHaveProperText(String expectedText) {
         equalsText(leftNavBar.getLeftElementsPackNavBtn(), expectedText);
         return this;
+    }
+
+    public DifferentElementsPage navigateToPageByDiffElBtn(String pageName) {
+        navigateToPageViaTopServiceMenu(topNavBar.getServiceTopNavBtn(),
+                topNavBar.getDifferentElementsBtn(), pageName);
+        return new DifferentElementsPage(driver);
     }
 
 }

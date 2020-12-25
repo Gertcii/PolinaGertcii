@@ -1,8 +1,7 @@
 package com.epam.training.center.hw3;
 
-import homework3.ex1.page.Ex1HomePage;
-import homework3.ex2.page.Ex2DifferentElementsPage;
-import homework3.ex2.page.Ex2HomePage;
+import homework3.HomePage;
+import homework3.DifferentElementsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
@@ -13,9 +12,8 @@ import java.util.concurrent.TimeUnit;
 public abstract class BaseTest {
 
     protected WebDriver driver;
-    protected Ex1HomePage ex1HomePage;
-    protected Ex2HomePage ex2HomePage;
-    protected Ex2DifferentElementsPage ex2DifferentElementsPage;
+    protected HomePage homePage;
+    protected DifferentElementsPage differentElementsPage;
 
     @BeforeTest
     public void setUp() {
@@ -29,8 +27,7 @@ public abstract class BaseTest {
     public void tearDown() {
         driver.quit();
         driver = null;
-        ex1HomePage = null;
-        ex2HomePage = null;
-        ex2DifferentElementsPage = null;
+        homePage = null;
+        differentElementsPage = null;
     }
 }

@@ -3,8 +3,8 @@ package com.epam.training.center.hw3.ex2.test;
 import com.epam.training.center.hw3.BaseTest;
 import com.epam.training.center.hw3.ConfigProperties;
 import com.epam.training.center.hw3.TestData;
-import homework3.ex2.page.Ex2DifferentElementsPage;
-import homework3.ex2.page.Ex2HomePage;
+import homework3.HomePage;
+import homework3.DifferentElementsPage;
 import org.testng.annotations.Test;
 
 public class HomeAndDifferentElementsPagesTest extends BaseTest {
@@ -12,10 +12,10 @@ public class HomeAndDifferentElementsPagesTest extends BaseTest {
     @Test
     public void checkingHomeAndDifferentElementsPagesElements() {
 
-        ex2HomePage = new Ex2HomePage(driver);
-        ex2DifferentElementsPage = new Ex2DifferentElementsPage(driver);
+        homePage = new HomePage(driver);
+        differentElementsPage = new DifferentElementsPage(driver);
 
-        ex2DifferentElementsPage = new Ex2DifferentElementsPage(driver);
+        differentElementsPage = new DifferentElementsPage(driver);
         /*Ex_2 #1
         open page
         Data - "https://jdi-testing.github.io/jdi-light/index.html"
@@ -24,72 +24,72 @@ public class HomeAndDifferentElementsPagesTest extends BaseTest {
         assert title
         Data - "Home Page"
          */
-        ex2HomePage.openPage(ConfigProperties.getProperty("url"), TestData.HOME_PAGE_TITLE.getValue());
+        homePage.openPage(ConfigProperties.getProperty("url"), TestData.HOME_PAGE_TITLE.getValue());
         /*Ex_2 #3 #4
         perform login, assert user name
         Data - login: Roman      pass: Jdi1234
                user name ROMAN IOVLEV
          */
-        ex2HomePage.login(ConfigProperties.getProperty("login"), ConfigProperties.getProperty("password"));
+        homePage.login(ConfigProperties.getProperty("login"), ConfigProperties.getProperty("password"));
         /*Ex_2 #4
         assert user name
         Data - user name ROMAN IOVLEV
          */
-        ex2HomePage.isRightUserName(ConfigProperties.getProperty("userName"));
+        homePage.isRightUserName(ConfigProperties.getProperty("userName"));
         /*Ex_2 #5
         Open through the header menu Service -> Different Elements Page
         Data -
          */
-        ex2HomePage.navigateToPageByDiffElBtn(TestData.DIFFERENT_ELEMENTS_TITLE.getValue());
+        homePage.navigateToPageByDiffElBtn(TestData.DIFFERENT_ELEMENTS_TITLE.getValue());
         /*Ex_2 #6
         Select checkboxes
         Data -	 Water
          */
-        ex2DifferentElementsPage.clickWaterCheckBox();
-        ex2DifferentElementsPage.waterCheckboxIsSelected();
+        differentElementsPage.clickWaterCheckBox();
+        differentElementsPage.waterCheckboxIsSelected();
         /*Ex_2 #6
         Select checkboxes
         Data -	 Wind
          */
-        ex2DifferentElementsPage.clickWindCheckBox();
-        ex2DifferentElementsPage.windCheckboxIsSelected();
+        differentElementsPage.clickWindCheckBox();
+        differentElementsPage.windCheckboxIsSelected();
         /*Ex_2 #7
         Select radio
         Data -	Selen
          */
-        ex2DifferentElementsPage.clickSelenRadio();
-        ex2DifferentElementsPage.selenRadioIsSelected();
+        differentElementsPage.clickSelenRadio();
+        differentElementsPage.selenRadioIsSelected();
         /*Ex_2 #8
         Select in dropdown
         Data -	Yellow
          */
-        ex2DifferentElementsPage.selectColor(TestData.YELLOW.getValue());
-        ex2DifferentElementsPage.yellowColorIsSelected();
+        differentElementsPage.selectColor(TestData.YELLOW.getValue());
+        differentElementsPage.yellowColorIsSelected();
         /*Ex_2 #9.
         Assert that for each checkbox there is an individual log row
         Data - 4
          */
-        ex2DifferentElementsPage.checkNumberOfLogRows(TestData.LOG_ROWS_NUMBER.getAmount());
+        differentElementsPage.checkNumberOfLogRows(TestData.LOG_ROWS_NUMBER.getAmount());
         /*Ex_2 #9.1
         Assert that water checkbox value is corresponded to the status of checkbox
         Data -
          */
-        ex2DifferentElementsPage.rowIsDisplayed(TestData.WATER_ROW_TEXT.getValue());
+        differentElementsPage.rowIsDisplayed(TestData.WATER_ROW_TEXT.getValue());
         /*Ex_2 #9.2
         Assert that wind checkbox value is corresponded to the status of checkbox
         Data -
          */
-        ex2DifferentElementsPage.rowIsDisplayed(TestData.WIND_ROW_TEXT.getValue());
+        differentElementsPage.rowIsDisplayed(TestData.WIND_ROW_TEXT.getValue());
         /*Ex_2 #9.3
         Assert that selen radio button there value is corresponded to the status of radio button
         Data -
          */
-        ex2DifferentElementsPage.rowIsDisplayed(TestData.SELEN_ROW_TEXT.getValue());
+        differentElementsPage.rowIsDisplayed(TestData.SELEN_ROW_TEXT.getValue());
         /*Ex_2 #9.4
         Assert that color value is corresponded to the selected value.
         Data -
          */
-        ex2DifferentElementsPage.rowIsDisplayed(TestData.YELLOW_ROW_TEXT.getValue());
+        differentElementsPage.rowIsDisplayed(TestData.YELLOW_ROW_TEXT.getValue());
 
     }
 }
