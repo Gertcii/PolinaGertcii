@@ -11,8 +11,8 @@ import java.util.List;
 
 public class Ex1HomePage extends BasePage {
 
-    private final LeftNavigationBar leftNavBar = new LeftNavigationBar(driver);
-    private final TopNavigationBar topNavBar = new TopNavigationBar(driver);
+    private LeftNavigationBar leftNavBar = new LeftNavigationBar(driver);
+    private TopNavigationBar topNavBar = new TopNavigationBar(driver);
 
     @FindBy(id = "user-icon")
     private WebElement userIcon;
