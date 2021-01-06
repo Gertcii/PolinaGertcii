@@ -16,13 +16,21 @@
         <maven.surefire.plugin.version>3.0.0-M5</maven.surefire.plugin.version>
         <selenium.java.version>3.141.59</selenium.java.version>
         <webdrivermanager.version>4.2.2</webdrivermanager.version>
+
+        <aspectj.version>1.8.10</aspectj.version>
+        <allure-maven.version>2.10.0</allure-maven.version>
+        <allure.version>2.13.7</allure.version>
+
+        <assertj-core.version>3.17.1</assertj-core.version>
+
+        <calculator.version>1.0</calculator.version>
     </properties>
 
     <profiles>
         <profile>
             <id>SumAndSub</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.file>src/test/resources/homework01/SumAndSub.xml</suite.file>
@@ -68,6 +76,16 @@
                 <suite.file>${project.basedir}/src/test/resources/homework03/TestNG.xml</suite.file>
             </properties>
         </profile>
+
+        <profile>
+            <id>Hw4</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>${project.basedir}/src/test/resources/homework04/TestNG_Allure.xml</suite.file>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>
@@ -81,7 +99,7 @@
         <dependency>
             <groupId>com.epam.tat.module4</groupId>
             <artifactId>calculator</artifactId>
-            <version>1.0</version>
+            <version>${calculator.version}</version>
             <scope>system</scope>
             <systemPath>
                 ${project.basedir}/src/test/resources/calculator/calculator-1.0.jar
@@ -96,7 +114,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.0.0</version>
+            <version>${testng.version}</version>
             <scope>compile</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
@@ -106,6 +124,12 @@
                     <version>${webdrivermanager.version}</version>
                 </dependency>
         -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -130,8 +154,25 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>${suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
+
+            <plugin>
+                    <groupId>io.qameta.allure</groupId>
+                    <artifactId>allure-maven</artifactId>
+                    <version>${allure-maven.version}</version>
+            </plugin>
+
         </plugins>
     </build>
 
