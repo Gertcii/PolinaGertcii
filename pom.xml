@@ -17,9 +17,11 @@
         <selenium.java.version>3.141.59</selenium.java.version>
         <webdrivermanager.version>4.2.2</webdrivermanager.version>
 
-        <aspectj.version>1.8.10</aspectj.version>
+<!-- -->
+        <aspectj.version>1.8.10</aspectj.version><!-- -->
+
         <allure-maven.version>2.10.0</allure-maven.version>
-        <allure.version>2.13.7</allure.version>
+        <allure.version>2.13.7</allure.version><!-- -->
 
         <assertj-core.version>3.17.1</assertj-core.version>
 
@@ -111,11 +113,18 @@
             <artifactId>selenium-java</artifactId>
             <version>${selenium.java.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
             <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
         <!--       <dependency>
@@ -124,12 +133,13 @@
                     <version>${webdrivermanager.version}</version>
                 </dependency>
         -->
-        <dependency>
+        <dependency><!-- -->
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>${allure.version}</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -168,9 +178,9 @@
             </plugin>
 
             <plugin>
-                    <groupId>io.qameta.allure</groupId>
-                    <artifactId>allure-maven</artifactId>
-                    <version>${allure-maven.version}</version>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure-maven.version}</version>
             </plugin>
 
         </plugins>

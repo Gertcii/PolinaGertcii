@@ -1,5 +1,6 @@
 package com.epam.training.center.hw4.allure_listener;
 
+import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +15,8 @@ public class AllureListener implements ITestListener {
         attachScreenShot(driver);
     }
 
-    private byte[] attachScreenShot(WebDriver driver){
+    @Attachment(type = "image/png", fileExtension = ".png")
+    byte[] attachScreenShot(WebDriver driver){
 
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
