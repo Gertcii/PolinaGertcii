@@ -10,7 +10,7 @@ import org.testng.ITestResult;
 public class AllureListener implements ITestListener {
 
     @Override
-    public void onTestStart(ITestResult result) {
+    public void onTestFailure(ITestResult result) {
         WebDriver driver = (WebDriver) result.getTestContext().getAttribute("driver");
         attachScreenShot(driver);
     }
