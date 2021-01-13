@@ -36,6 +36,15 @@ public abstract class BaseTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         testContext.setAttribute("driver", driver);
+
+        actionStep = new ActionStep(driver);
+        assertionStep = new AssertionStep(driver);
+        actionStep.openPage(url);
+        assertionStep.titleShouldBeRight(TestData.HOME_PAGE_TITLE.getValue());
+        actionStep.login(login, password);
+        assertionStep.userNameShouldBeRight(userName);
+
+
     }
 
     @AfterTest
