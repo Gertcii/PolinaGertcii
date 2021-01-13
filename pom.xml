@@ -9,20 +9,32 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+
+        <aspectj.version>1.8.10</aspectj.version>
+
+        <!--dependencies -->
         <testng.version>7.0.0</testng.version>
+        <selenium.java.version>3.141.59</selenium.java.version>
+        <calculator.version>1.0</calculator.version>
+        <webdrivermanager.version>4.2.2</webdrivermanager.version>
+        <allure.version>2.13.7</allure.version>
+        <assertj-core.version>3.17.1</assertj-core.version>
+        <cucumber-java.version>6.9.1</cucumber-java.version>
+
+        <!-- plugin-->
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <maven.compiler.plugin.source>1.8</maven.compiler.plugin.source>
         <maven.compiler.plugin.target>1.8</maven.compiler.plugin.target>
         <maven.surefire.plugin.version>3.0.0-M5</maven.surefire.plugin.version>
-        <selenium.java.version>3.141.59</selenium.java.version>
-        <webdrivermanager.version>4.2.2</webdrivermanager.version>
+        <allure-maven.version>2.10.0</allure-maven.version>
+
     </properties>
 
     <profiles>
         <profile>
             <id>SumAndSub</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.file>src/test/resources/homework01/SumAndSub.xml</suite.file>
@@ -68,6 +80,26 @@
                 <suite.file>${project.basedir}/src/test/resources/homework03/TestNG.xml</suite.file>
             </properties>
         </profile>
+
+        <profile>
+            <id>Hw4</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>${project.basedir}/src/test/resources/homework04/TestNG_Allure.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>Hw5</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>${project.basedir}/src/test/resources/homework05/cucmber-textng-suite.xml</suite.file>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>
@@ -81,7 +113,7 @@
         <dependency>
             <groupId>com.epam.tat.module4</groupId>
             <artifactId>calculator</artifactId>
-            <version>1.0</version>
+            <version>${calculator.version}</version>
             <scope>system</scope>
             <systemPath>
                 ${project.basedir}/src/test/resources/calculator/calculator-1.0.jar
@@ -93,19 +125,53 @@
             <artifactId>selenium-java</artifactId>
             <version>${selenium.java.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.0.0</version>
+            <version>${testng.version}</version>
             <scope>compile</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
-        <!--       <dependency>
+              <dependency>
                     <groupId>io.github.bonigarcia</groupId>
                     <artifactId>webdrivermanager</artifactId>
                     <version>${webdrivermanager.version}</version>
                 </dependency>
-        -->
+
+        <dependency><!-- -->
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>6.9.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>6.9.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>6.9.1</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -130,8 +196,28 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>${suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
+                    <systemPropertyVariables>
+                        <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+                    </systemPropertyVariables>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
+
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure-maven.version}</version>
+            </plugin>
+
         </plugins>
     </build>
 
