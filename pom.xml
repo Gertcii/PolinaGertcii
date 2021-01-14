@@ -20,6 +20,7 @@
         <allure.version>2.13.7</allure.version>
         <assertj-core.version>3.17.1</assertj-core.version>
         <cucumber-java.version>6.9.1</cucumber-java.version>
+        <jdi-light-html.version>1.3.2</jdi-light-html.version>
 
         <!-- plugin-->
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
@@ -103,13 +104,20 @@
     </profiles>
 
     <dependencies>
+        <!-- TestNG-->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- Calculator-->
         <dependency>
             <groupId>com.epam.tat.module4</groupId>
             <artifactId>calculator</artifactId>
@@ -119,57 +127,57 @@
                 ${project.basedir}/src/test/resources/calculator/calculator-1.0.jar
             </systemPath>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <!-- selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium.java.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>${testng.version}</version>
-            <scope>compile</scope>
-        </dependency>
-
+        <!-- assertj -->
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj-core.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
-              <dependency>
-                    <groupId>io.github.bonigarcia</groupId>
-                    <artifactId>webdrivermanager</artifactId>
-                    <version>${webdrivermanager.version}</version>
-                </dependency>
-
-        <dependency><!-- -->
+        <!-- webdrivermanager -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+        </dependency>
+        <!-- allure - testng -->
+        <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>${allure.version}</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <!--cucumber-->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>6.9.1</version>
+            <version>${cucumber-java.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
-            <version>6.9.1</version>
+            <version>${cucumber-java.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-picocontainer</artifactId>
-            <version>6.9.1</version>
+            <version>${cucumber-java.version}</version>
             <scope>test</scope>
+        </dependency>
+        <!--JDI-->
+        <dependency>
+            <groupId>com.epam.jdi</groupId>
+            <artifactId>jdi-light-html</artifactId>
+            <version>${jdi-light-html.version}</version>
         </dependency>
 
     </dependencies>
