@@ -2,7 +2,7 @@ package com.epam.training.center.hw6;
 
 import com.epam.jdi.light.driver.WebDriverUtils;
 import homework6.JdiSite;
-import homework6.entity.Data;
+import homework6.entity.MetalAndColor;
 import homework6.entity.User;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
@@ -24,17 +24,13 @@ public class JdiHomeAndMetalAndColorsPageTest {
     }
 
     @Test(dataProvider = "jsonData", dataProviderClass = JsonTestDataProvider.class)
-    public void testTest(Data data) {
+    public void metalAndColorFormTest(MetalAndColor metalAndColor) {
 
         JdiSite.openMetalsAndColorsPageViaHeaderMenu();
-        JdiSite.selectSummaryCheckbox(data);
-        JdiSite.selectElements(data);
-        JdiSite.selectColor(data);
-        JdiSite.selectMetal(data);
-        JdiSite.selectVegetable(data);
-        JdiSite.clickSubmit();
 
-        JdiSite.resultRowsHaveProperText(data);
+        JdiSite.fillMetalAndColor(metalAndColor);
+
+        JdiSite.resultRowsHaveProperText(metalAndColor);
 
     }
 

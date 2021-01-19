@@ -4,7 +4,7 @@ package homework6;
 import com.epam.jdi.light.elements.pageobjects.annotations.JSite;
 import com.epam.jdi.light.elements.pageobjects.annotations.Title;
 import com.epam.jdi.light.elements.pageobjects.annotations.Url;
-import homework6.entity.Data;
+import homework6.entity.MetalAndColor;
 import homework6.entity.User;
 
 @JSite("https://jdi-testing.github.io/jdi-light/")
@@ -23,7 +23,6 @@ public class JdiSite {
         homePage.checkOpened();
     }
 
-
     public static void login(User user) {
         homePage.login(user);
     }
@@ -37,32 +36,12 @@ public class JdiSite {
         metalAndColorPage.checkOpened();
     }
 
-    public static void selectSummaryCheckbox(Data data) {
-        metalAndColorPage.selectNumberInSummary(data);
+    public static void fillMetalAndColor(MetalAndColor metalAndColor) {
+        metalAndColorPage.fillMetalAndColorForm(metalAndColor);
     }
 
-    public static void selectElements(Data data) {
-        metalAndColorPage.selectElements(data);
-    }
-
-    public static void selectColor(Data data) {
-        metalAndColorPage.selectColor(data);
-    }
-
-    public static void selectMetal(Data data) {
-        metalAndColorPage.selectMetal(data);
-    }
-
-    public static void selectVegetable(Data data) {
-        metalAndColorPage.selectVegetables(data);
-    }
-
-    public static void clickSubmit() {
-        metalAndColorPage.submit();
-    }
-
-    public static void resultRowsHaveProperText(Data data) {
-        metalAndColorPage.resultRowsHaveProperText(data);
+    public static void resultRowsHaveProperText(MetalAndColor metalAndColor) {
+        metalAndColorPage.resultRowsHaveProperText(metalAndColor);
     }
 
 
