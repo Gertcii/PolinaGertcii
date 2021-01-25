@@ -293,33 +293,7 @@
          <spel:text></spel:text>\r
       </spel:CheckTextsRequest>\r
    </soap:Body>\r
-</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://speller.yandex.net/services/spellservice/SpellServiceSoap/checkTextsRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="c1c9b57b-b26e-4fed-89b3-c8338720603e" name="checkText"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="db08d207-beb0-4e6a-a967-7047de3c3fd0" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CapitalizationErrorIsShowed" searchProperties="true"><con:settings/><con:testStep type="groovy" name="get1RowFromFile" id="df301852-1fbb-4258-b4f4-52460f60c61b"><con:settings/><con:config><script>
-import groovy.util.*
-import groovy.json.JsonSlurper
-
-def grUtils = new com.eviware.soapui.support.GroovyUtils(context)
-
-def projectDir = grUtils.projectPath
-
-File file = new File(projectDir)
-
-def fileDir = file.getPath()
-
-def filePath = fileDir + "\\dataSource.csv"
-
-context.fileReader = new BufferedReader(new FileReader(filePath))
-
-rows = context.fileReader.readLines()
-
-String[] dataFromRow = rows[1].split(",")
-testRunner.testCase.setPropertyValue("inputText", dataFromRow[0])
-testRunner.testCase.setPropertyValue("expectedResult", dataFromRow[1])
-testRunner.testCase.setPropertyValue("erorCodeNumber", dataFromRow[2])
-//testRunner.testCase.testSuite.getTestStepByName("CapErrProperty").setPropertyValue("inputText", dataFromRow[0])
-//testRunner.testCase.testSuite.getTestStepByName("CapErrProperty").setPropertyValue("epectedResult", dataFromRow[1])
-//testRunner.testCase.testSuite.getTestStepByName("CapErrProperty").setPropertyValue("erorCodeNumber", dataFromRow[2])
-
-	</script></con:config></con:testStep><con:testStep type="properties" name="CapErrProperty" id="254bb1da-c2be-4744-b03b-1ff3448eea9f"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>inputText</con:name><con:value>moscow</con:value></con:property><con:property><con:name>epectedResult</con:name><con:value>Moscow</con:value></con:property><con:property><con:name>erorCodeNumber</con:name><con:value>3</con:value></con:property></con:properties></con:config></con:testStep><con:testStep type="request" name="WordWithCapError" id="8b646bce-11c5-43fe-b1e5-a2963e1fb834"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpellServiceSoap</con:interface><con:operation>checkText</con:operation><con:request name="WordWithCapError" id="e0f5999d-a08f-4fc9-a50e-3f90b22b322b"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://speller.yandex.net/services/spellservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spel="http://speller.yandex.net/services/spellservice">\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://speller.yandex.net/services/spellservice/SpellServiceSoap/checkTextsRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="c1c9b57b-b26e-4fed-89b3-c8338720603e" name="checkText"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="db08d207-beb0-4e6a-a967-7047de3c3fd0" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CapitalizationErrorIsShowed" searchProperties="true"><con:settings/><con:testStep type="properties" name="CapErrProperty" id="254bb1da-c2be-4744-b03b-1ff3448eea9f"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>inputText</con:name><con:value>mOscow</con:value></con:property><con:property><con:name>expectedText</con:name><con:value>Moscow</con:value></con:property><con:property><con:name>errorCodeNumber</con:name><con:value>1</con:value></con:property></con:properties></con:config></con:testStep><con:testStep type="request" name="WordWithCapError" id="8b646bce-11c5-43fe-b1e5-a2963e1fb834"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpellServiceSoap</con:interface><con:operation>checkText</con:operation><con:request name="WordWithCapError" id="e0f5999d-a08f-4fc9-a50e-3f90b22b322b"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://speller.yandex.net/services/spellservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spel="http://speller.yandex.net/services/spellservice">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <spel:CheckTextRequest lang="${#Global#language}" options="" format="">
@@ -329,37 +303,11 @@ testRunner.testCase.setPropertyValue("erorCodeNumber", dataFromRow[2])
 </soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="b44238c8-efa2-4233-aed0-ac063e3a0ab0"/><con:assertion type="XPath Match" id="1aebf352-7a96-431b-bd84-ef36c73030a8" name="XPath Match"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
 declare namespace ns1='http://speller.yandex.net/services/spellservice';
 //ns1:SpellResult</path><content><![CDATA[<SpellResult xmlns="http://speller.yandex.net/services/spellservice" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-  <error code="${#TestCase#erorCodeNumber}" pos="0" row="0" col="0" len="6">
+  <error code="${#TestCase#errorCodeNumber}" pos="0" row="0" col="0" len="6">
     <word>${#TestCase#inputText}</word>
-    <s>${#TestCase#expectedResult}</s>
+    <s>${#TestCase#expectedText}</s>
   </error>
-</SpellResult>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="8a57fe0d-f7ba-4ce1-a5b5-97151e70b218" name="Invalid HTTP Status Codes"><con:configuration><codes>200 OK</codes></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:setupScript>testRunner.runTestStepByName("WordWithCapError")</con:setupScript><con:properties><con:property><con:name>inputText</con:name><con:value>moscow</con:value></con:property><con:property><con:name>expectedResult</con:name><con:value>Moscow</con:value></con:property><con:property><con:name>erorCodeNumber</con:name><con:value>3</con:value></con:property></con:properties></con:testCase><con:testCase id="2290f932-3f5a-49fe-afa4-63d7d6213899" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="UnknowWordError" searchProperties="true"><con:settings/><con:testStep type="groovy" name="get1RowFromFile" id="82d1b48c-636f-4c69-941d-795b619f46a5"><con:settings/><con:config><script>
-import groovy.util.*
-import groovy.json.JsonSlurper
-
-def grUtils = new com.eviware.soapui.support.GroovyUtils(context)
-
-def projectDir = grUtils.projectPath
-
-File file = new File(projectDir)
-
-def fileDir = file.getPath()
-
-def filePath = fileDir + "\\dataSource.csv"
-
-context.fileReader = new BufferedReader(new FileReader(filePath))
-
-rows = context.fileReader.readLines()
-
-String[] dataFromRow = rows[3].split(",")
-testRunner.testCase.setPropertyValue("inputText", dataFromRow[0])
-testRunner.testCase.setPropertyValue("expectedResult", dataFromRow[1])
-testRunner.testCase.setPropertyValue("erorCodeNumber", dataFromRow[2])
-//testRunner.testCase.testSuite.getTestStepByName("CapErrProperty").setPropertyValue("inputText", dataFromRow[0])
-//testRunner.testCase.testSuite.getTestStepByName("CapErrProperty").setPropertyValue("epectedResult", dataFromRow[1])
-//testRunner.testCase.testSuite.getTestStepByName("CapErrProperty").setPropertyValue("erorCodeNumber", dataFromRow[2])
-
-	</script></con:config></con:testStep><con:testStep type="properties" name="OneMistakeProperty" id="8b62bb43-06bc-4e13-8917-a114a472caa6"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties/></con:config></con:testStep><con:testStep type="request" name="WordWithOneMistake" id="8ec834db-0cec-4658-bba2-5ef12ce57108"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpellServiceSoap</con:interface><con:operation>checkText</con:operation><con:request name="WordWithOneMistake" id="0e75ffc2-a1c4-4c2a-9f2a-a60d53a431dd"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://speller.yandex.net/services/spellservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spel="http://speller.yandex.net/services/spellservice">\r
+</SpellResult>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="8a57fe0d-f7ba-4ce1-a5b5-97151e70b218" name="Invalid HTTP Status Codes"><con:configuration><codes>200 OK</codes></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:setupScript/><con:properties><con:property><con:name>inputText</con:name><con:value>mOscow</con:value></con:property><con:property><con:name>expectedText</con:name><con:value>Moscow</con:value></con:property><con:property><con:name>errorCodeNumber</con:name><con:value>3</con:value></con:property></con:properties></con:testCase><con:testCase id="2290f932-3f5a-49fe-afa4-63d7d6213899" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="UnknowWordError" searchProperties="true"><con:settings/><con:testStep type="properties" name="OneMistakeProperty" id="8b62bb43-06bc-4e13-8917-a114a472caa6"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>inputText</con:name><con:value>mystake</con:value></con:property><con:property><con:name>expectedText</con:name><con:value>mistake</con:value></con:property><con:property><con:name>errorCodeNumber</con:name><con:value>1</con:value></con:property></con:properties></con:config></con:testStep><con:testStep type="request" name="WordWithOneMistake" id="8ec834db-0cec-4658-bba2-5ef12ce57108"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpellServiceSoap</con:interface><con:operation>checkText</con:operation><con:request name="WordWithOneMistake" id="0e75ffc2-a1c4-4c2a-9f2a-a60d53a431dd"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://speller.yandex.net/services/spellservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spel="http://speller.yandex.net/services/spellservice">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <spel:CheckTextRequest lang="${#Global#language}" options="" format="">\r
@@ -369,37 +317,11 @@ testRunner.testCase.setPropertyValue("erorCodeNumber", dataFromRow[2])
 </soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1de8e405-de73-493e-a583-d454a5e73eaf"/><con:assertion type="XPath Match" id="edd59f64-8879-4482-82de-fe623c599805" name="XPath Match"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
 declare namespace ns1='http://speller.yandex.net/services/spellservice';
 //ns1:SpellResult</path><content><![CDATA[<SpellResult xmlns="http://speller.yandex.net/services/spellservice" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-  <error code="${#TestCase#erorCodeNumber}" pos="0" row="0" col="0" len="7">
+  <error code="${#TestCase#errorCodeNumber}" pos="0" row="0" col="0" len="7">
     <word>${#TestCase#inputText}</word>
-    <s>${#TestCase#expectedResult}</s>
+    <s>${#TestCase#expectedText}</s>
   </error>
-</SpellResult>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:setupScript>testRunner.runTestStepByName("WordWithOneMistake")</con:setupScript><con:properties><con:property><con:name>inputText</con:name><con:value>mystake</con:value></con:property><con:property><con:name>expectedResult</con:name><con:value>mistake</con:value></con:property><con:property><con:name>erorCodeNumber</con:name><con:value>1</con:value></con:property></con:properties></con:testCase><con:testCase id="3398407f-eba9-486d-97ca-188c3a4b5aba" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="RepeatWordError" searchProperties="true"><con:settings/><con:testStep type="groovy" name="get1RowFromFile" id="4d50ede8-bda8-4cc3-a076-6aeedff788bd"><con:settings/><con:config><script>
-import groovy.util.*
-import groovy.json.JsonSlurper
-
-def grUtils = new com.eviware.soapui.support.GroovyUtils(context)
-
-def projectDir = grUtils.projectPath
-
-File file = new File(projectDir)
-
-def fileDir = file.getPath()
-
-def filePath = fileDir + "\\dataSource.csv"
-
-context.fileReader = new BufferedReader(new FileReader(filePath))
-
-rows = context.fileReader.readLines()
-
-String[] dataFromRow = rows[2].split(",")
-testRunner.testCase.setPropertyValue("inputText", dataFromRow[0])
-testRunner.testCase.setPropertyValue("expectedResult", dataFromRow[1])
-testRunner.testCase.setPropertyValue("erorCodeNumber", dataFromRow[2])
-//testRunner.testCase.testSuite.getTestStepByName("CapErrProperty").setPropertyValue("inputText", dataFromRow[0])
-//testRunner.testCase.testSuite.getTestStepByName("CapErrProperty").setPropertyValue("epectedResult", dataFromRow[1])
-//testRunner.testCase.testSuite.getTestStepByName("CapErrProperty").setPropertyValue("erorCodeNumber", dataFromRow[2])
-
-	</script></con:config></con:testStep><con:testStep type="properties" name="RepeatWord" id="344e25c9-1cfd-46b4-a1f1-a45a0cb0dbc7"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties/></con:config></con:testStep><con:testStep type="request" name="WordWithOneMistake" id="39a13c0e-f37b-4fcf-836f-c3ff55b6782d"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpellServiceSoap</con:interface><con:operation>checkText</con:operation><con:request name="WordWithOneMistake" id="0e75ffc2-a1c4-4c2a-9f2a-a60d53a431dd"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://speller.yandex.net/services/spellservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spel="http://speller.yandex.net/services/spellservice">\r
+</SpellResult>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:setupScript/><con:properties><con:property><con:name>inputText</con:name><con:value>mystake</con:value></con:property><con:property><con:name>expectedText</con:name><con:value>mistake</con:value></con:property><con:property><con:name>errorCodeNumber</con:name><con:value>1</con:value></con:property></con:properties></con:testCase><con:testCase id="3398407f-eba9-486d-97ca-188c3a4b5aba" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="RepeatWordError" searchProperties="true"><con:settings/><con:testStep type="properties" name="RepeatWord" id="344e25c9-1cfd-46b4-a1f1-a45a0cb0dbc7"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties/></con:config></con:testStep><con:testStep type="request" name="RepeatWordMistake" id="39a13c0e-f37b-4fcf-836f-c3ff55b6782d"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpellServiceSoap</con:interface><con:operation>checkText</con:operation><con:request name="RepeatWordMistake" id="0e75ffc2-a1c4-4c2a-9f2a-a60d53a431dd"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://speller.yandex.net/services/spellservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spel="http://speller.yandex.net/services/spellservice">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <spel:CheckTextRequest lang="${#Global#language}" options="" format="">\r
@@ -409,37 +331,11 @@ testRunner.testCase.setPropertyValue("erorCodeNumber", dataFromRow[2])
 </soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1de8e405-de73-493e-a583-d454a5e73eaf"/><con:assertion type="XPath Match" id="edd59f64-8879-4482-82de-fe623c599805" name="XPath Match"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
 declare namespace ns1='http://speller.yandex.net/services/spellservice';
 //ns1:SpellResult</path><content><![CDATA[<SpellResult xmlns="http://speller.yandex.net/services/spellservice" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-  <error code="${#TestCase#erorCodeNumber}" pos="0" row="0" col="0" len="7">
+  <error code="${#TestCase#erorCodeNumber}" pos="0" row="0" col="0" len="2">
     <word>${#TestCase#inputText}</word>
     <s>${#TestCase#expectedResult}</s>
   </error>
-</SpellResult>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:setupScript>testRunner.runTestStepByName("WordWithOneMistake")</con:setupScript><con:properties><con:property><con:name>inputText</con:name><con:value>put it it into the box</con:value></con:property><con:property><con:name>expectedResult</con:name><con:value>put it into the box</con:value></con:property><con:property><con:name>erorCodeNumber</con:name><con:value>2</con:value></con:property></con:properties></con:testCase><con:testCase id="f3add4f2-b42c-4275-aeb8-5a3ca34371b6" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TwoMistakesInWord" searchProperties="true"><con:settings/><con:testStep type="groovy" name="get1RowFromFile" id="dfba1b45-82fd-4b50-a0e7-f8a60b9ca8f6"><con:settings/><con:config><script>
-import groovy.util.*
-import groovy.json.JsonSlurper
-
-def grUtils = new com.eviware.soapui.support.GroovyUtils(context)
-
-def projectDir = grUtils.projectPath
-
-File file = new File(projectDir)
-
-def fileDir = file.getPath()
-
-def filePath = fileDir + "\\dataSource.csv"
-
-context.fileReader = new BufferedReader(new FileReader(filePath))
-
-rows = context.fileReader.readLines()
-
-String[] dataFromRow = rows[4].split(",")
-testRunner.testCase.setPropertyValue("inputText", dataFromRow[0])
-testRunner.testCase.setPropertyValue("expectedResult", dataFromRow[1])
-testRunner.testCase.setPropertyValue("erorCodeNumber", dataFromRow[2])
-//testRunner.testCase.testSuite.getTestStepByName("CapErrProperty").setPropertyValue("inputText", dataFromRow[0])
-//testRunner.testCase.testSuite.getTestStepByName("CapErrProperty").setPropertyValue("epectedResult", dataFromRow[1])
-//testRunner.testCase.testSuite.getTestStepByName("CapErrProperty").setPropertyValue("erorCodeNumber", dataFromRow[2])
-
-	</script></con:config></con:testStep><con:testStep type="properties" name="OneMistakeProperty" id="734f05b8-7421-45ed-ae9b-7fcbb7703f69"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties/></con:config></con:testStep><con:testStep type="request" name="WordWithOneMistake" id="a905f714-1a13-44dd-b14b-64c5d129bf0a"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpellServiceSoap</con:interface><con:operation>checkText</con:operation><con:request name="WordWithOneMistake" id="0e75ffc2-a1c4-4c2a-9f2a-a60d53a431dd"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://speller.yandex.net/services/spellservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spel="http://speller.yandex.net/services/spellservice">\r
+</SpellResult>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:setupScript>testRunner.runTestStepByName("WordWithOneMistake")</con:setupScript><con:properties><con:property><con:name>inputText</con:name><con:value>put it it into the box</con:value></con:property><con:property><con:name>expectedResult</con:name><con:value>put it into the box</con:value></con:property><con:property><con:name>erorCodeNumber</con:name><con:value>2</con:value></con:property></con:properties></con:testCase><con:testCase id="f3add4f2-b42c-4275-aeb8-5a3ca34371b6" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TwoMistakesInWord" searchProperties="true"><con:settings/><con:testStep type="properties" name="OneMistakeProperty" id="734f05b8-7421-45ed-ae9b-7fcbb7703f69"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties/></con:config></con:testStep><con:testStep type="request" name="WordWithOneMistake" id="a905f714-1a13-44dd-b14b-64c5d129bf0a"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpellServiceSoap</con:interface><con:operation>checkText</con:operation><con:request name="WordWithOneMistake" id="0e75ffc2-a1c4-4c2a-9f2a-a60d53a431dd"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://speller.yandex.net/services/spellservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spel="http://speller.yandex.net/services/spellservice">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <spel:CheckTextRequest lang="${#Global#language}" options="" format="">\r
@@ -471,6 +367,8 @@ context.fileReader = new BufferedReader(new FileReader(filePath))
 
 rows = context.fileReader.readLines()
 
+def row = rows[0]
+
 for(int i = 1; i &lt; 4; i++){
 	
 String[] dataFromRow = rows[i].split(",")
@@ -494,7 +392,10 @@ declare namespace ns1='http://speller.yandex.net/services/spellservice';
     <word>${#TestCase#inputText}</word>
     <s>${#TestCase#expectedResult}</s>
   </error>
-</SpellResult>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="8a57fe0d-f7ba-4ce1-a5b5-97151e70b218" name="Invalid HTTP Status Codes"><con:configuration><codes>200 OK</codes></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:setupScript>testRunner.runTestStepByName("DifErrorCase")</con:setupScript><con:properties><con:property><con:name>inputText</con:name><con:value>mystake</con:value></con:property><con:property><con:name>expectedResult</con:name><con:value>mistake</con:value></con:property><con:property><con:name>erorCodeNumber</con:name><con:value>1</con:value></con:property><con:property><con:name>len</con:name><con:value>7</con:value></con:property></con:properties></con:testCase><con:properties><con:property><con:name>inputText</con:name><con:value>moscow</con:value></con:property><con:property><con:name>epectedResult</con:name><con:value>Moscow</con:value></con:property><con:property><con:name>erorCodeNumber</con:name><con:value>3</con:value></con:property><con:property><con:name>expectedResult</con:name><con:value>Moscow</con:value></con:property></con:properties></con:testSuite><con:testSuite id="fae4915a-8156-4e74-a6bc-c77501735650" name="positiveTest"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="777c0515-5197-438a-88d4-dd66df019e4e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="OnlySpaceInText" searchProperties="true"><con:settings/><con:testStep type="request" name="OnlySpaceInText" id="745aa4fa-93fa-4e09-809c-f756c5412593"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpellServiceSoap</con:interface><con:operation>checkText</con:operation><con:request name="OnlySpaceInText" id="e900ab63-ad5d-4690-a74e-8698a1219a0e"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://speller.yandex.net/services/spellservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spel="http://speller.yandex.net/services/spellservice">\r
+</SpellResult>]]></content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="8a57fe0d-f7ba-4ce1-a5b5-97151e70b218" name="Invalid HTTP Status Codes"><con:configuration><codes>200 OK</codes></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="properties" name="Properties" id="bdebf704-4be1-4dd5-8112-31d78b238abf"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties/></con:config></con:testStep><con:setupScript>testRunner.runTestStepByName("DifErrorCase")</con:setupScript><con:tearDownScript>testRunner.testCase.getTestStepByName("Custom Properties").removeProperty("len")
+testRunner.testCase.getTestStepByName("Custom Properties").removeProperty("erorCodeNumber")
+testRunner.testCase.getTestStepByName("Custom Properties").removeProperty("inputText")
+testRunner.testCase.getTestStepByName("Custom Properties").removeProperty("expectedResult")</con:tearDownScript><con:properties><con:property><con:name>inputText</con:name><con:value>mystake</con:value></con:property><con:property><con:name>expectedResult</con:name><con:value>mistake</con:value></con:property><con:property><con:name>erorCodeNumber</con:name><con:value>1</con:value></con:property><con:property><con:name>len</con:name><con:value>7</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:testSuite id="fae4915a-8156-4e74-a6bc-c77501735650" name="positiveTest"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="777c0515-5197-438a-88d4-dd66df019e4e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="OnlySpaceInText" searchProperties="true"><con:settings/><con:testStep type="request" name="OnlySpaceInText" id="745aa4fa-93fa-4e09-809c-f756c5412593"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpellServiceSoap</con:interface><con:operation>checkText</con:operation><con:request name="OnlySpaceInText" id="e900ab63-ad5d-4690-a74e-8698a1219a0e"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://speller.yandex.net/services/spellservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spel="http://speller.yandex.net/services/spellservice">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <spel:CheckTextRequest>\r
@@ -510,4 +411,11 @@ declare namespace ns1='http://speller.yandex.net/services/spellservice';
          <spel:text></spel:text>\r
       </spel:CheckTextRequest>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="0120582f-b7c3-4385-8ca5-9092ece72a65"/><con:assertion type="Invalid HTTP Status Codes" id="4af2f934-55d5-40eb-ab50-c7d5a412acd3" name="Invalid HTTP Status Codes"><con:configuration><codes>200 OK</codes></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="0120582f-b7c3-4385-8ca5-9092ece72a65"/><con:assertion type="Invalid HTTP Status Codes" id="4af2f934-55d5-40eb-ab50-c7d5a412acd3" name="Invalid HTTP Status Codes"><con:configuration><codes>200 OK</codes></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="87445f8c-4e3e-43c2-a011-1c235609e4b8" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="NoMistake" searchProperties="true"><con:settings/><con:testStep type="request" name="StringWithoutMistake" id="13d2901c-43c5-40f7-b8b4-03aca31cc0f3"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpellServiceSoap</con:interface><con:operation>checkText</con:operation><con:request name="StringWithoutMistake" id="5c0e70d4-173e-42c6-ae61-cc18b2060a77"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://speller.yandex.net/services/spellservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spel="http://speller.yandex.net/services/spellservice">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <spel:CheckTextRequest lang="${#Global#language}" options="" format="">\r
+         <spel:text>${#TestCase#inputText}</spel:text>\r
+      </spel:CheckTextRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="c7c6b9c6-8ab0-4554-b631-f52ee0eee797"/><con:assertion type="Invalid HTTP Status Codes" id="5d42a12b-e91c-4dea-bebc-7544c7599cc1" name="Invalid HTTP Status Codes"><con:configuration><codes>200 ok</codes></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>inputText</con:name><con:value>There are not any mistakes</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
