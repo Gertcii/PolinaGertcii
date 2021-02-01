@@ -1,17 +1,14 @@
-package com.epam.training.center.hw8.service;
+package homework8.services;
 
-import com.epam.training.center.hw8.ConfigurationProperties;
+
+import homework8.ConfigurationProperties;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.hamcrest.Matchers;
-
 
 import java.io.IOException;
 import java.util.Map;
-
-import static io.restassured.RestAssured.given;
 
 public class CommonService {
 
@@ -22,15 +19,9 @@ public class CommonService {
         requestSpecification = new RequestSpecBuilder()
                 .setBaseUri(ConfigurationProperties.getProperty("url")).build();
     }
-    public Response postNoParams(String uri) {
-        Response response = given(requestSpecification).post(uri);
-        response.then()
-                .statusCode(Matchers.lessThan(300))
-                .statusCode(Matchers.greaterThanOrEqualTo(200));
-        return response;
-    }
+
     public Response getWithParams(String uri, Map<String, Object> params) {
-        RequestSpecification specification = given(requestSpecification);
+        RequestSpecification specification = RestAssured.given(requestSpecification);
 
         for (Map.Entry<String, Object> param : params.entrySet())
             specification.param(param.getKey(), param.getValue());

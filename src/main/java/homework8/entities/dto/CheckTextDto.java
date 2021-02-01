@@ -1,14 +1,8 @@
-package com.epam.training.center.hw8.dto;
+package homework8.entities.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import java.util.Arrays;
 import java.util.Objects;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class CheckTextDto {
     private String code;
     private String word;
@@ -17,8 +11,6 @@ public class CheckTextDto {
     private String row;
     private String col;
     private String len;
-    private String response;
-
 
     public String getCode() {
         return code;
@@ -76,13 +68,6 @@ public class CheckTextDto {
         this.len = len;
     }
 
-    public String getResponse() {
-        return response;
-    }
-
-    public void setResponse(String response) {
-        this.response = response;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -103,8 +88,22 @@ public class CheckTextDto {
                 Objects.equals(col, ctd.col) &&
                 Objects.equals(len, ctd.len);
     }
+
     @Override
     public int hashCode() {
-        return Objects.hash(code, word, s, pos, row, col, len, response);
+        return Objects.hash(code, word, s, pos, row, col, len);
+    }
+
+    @Override
+    public String toString() {
+        return "CheckTextDto{" +
+                "code='" + code + '\'' +
+                ", word='" + word + '\'' +
+                ", s=" + Arrays.toString(s) +
+                ", pos='" + pos + '\'' +
+                ", row='" + row + '\'' +
+                ", col='" + col + '\'' +
+                ", len='" + len + '\'' +
+                '}';
     }
 }

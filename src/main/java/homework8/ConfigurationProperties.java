@@ -1,4 +1,4 @@
-package com.epam.training.center.hw8;
+package homework8;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
