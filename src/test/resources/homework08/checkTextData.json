@@ -1,0 +1,38 @@
+[
+  {
+    "text" : "mystake",
+    "lang" : "en",
+    "options" : "0",
+    "word": "mystake",
+    "s": "mistake",
+    "code": "1"
+  },
+  {
+    "text" : "moscow",
+    "lang" : "en",
+    "options" : "0",
+    "word": "moscow",
+    "s": "Moscow"
+    ,
+    "code": "3"
+  },
+  {
+    "text" : "put it it into the box",
+    "lang" : "en",
+    "options" : "8",
+    "word": "put it it into the box",
+    "s": "it",
+    "code": "2"
+  },
+  {
+    "text" : "my anather test",
+    "lang" : "en",
+    "options" : "8",
+    "word": "anather",
+    "s": "another",
+    "code": "1"
+  }
+]
+
+
+
