@@ -23,4 +23,6 @@ public class ConfigurationProperties {
     public static String getProperty(String key) {
         return PROPERTIES.getProperty(key);
     }
+
+    public static String getUrl() { return getProperty("url"); }
 }

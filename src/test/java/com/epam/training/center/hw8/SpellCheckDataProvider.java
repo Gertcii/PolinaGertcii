@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import homework8.entities.dto.DataForText;
 import homework8.entities.dto.DataForTexts;
 import org.testng.annotations.DataProvider;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
@@ -26,18 +25,14 @@ public class SpellCheckDataProvider {
         try {
             fr = new FileReader(filePath);
             textDataArr = gson.fromJson(fr, DataForText[].class);
-            int i = 0;
             dataProviderArray = new Object[textDataArr.length][1];
-            for (DataForText ctd : textDataArr
-            ) {
-                dataProviderArray[i][0] = ctd;
-                i++;
+            for (int j = 0; j < textDataArr.length; j++) {
+                dataProviderArray[j][0] = textDataArr[j];
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         return dataProviderArray;
-
     }
 
     @DataProvider
@@ -49,17 +44,13 @@ public class SpellCheckDataProvider {
         try {
             fr = new FileReader(filePath);
             dataForTexts = gson.fromJson(fr, DataForTexts[].class);
-            int i = 0;
             dataProviderArray = new Object[dataForTexts.length][1];
-            for (DataForTexts ctd : dataForTexts
-            ) {
-                dataProviderArray[i][0] = ctd;
-                i++;
+            for (int j = 0; j < dataForTexts.length; j++) {
+                dataProviderArray[j][0] = dataForTexts[j];
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         return dataProviderArray;
-
     }
 }

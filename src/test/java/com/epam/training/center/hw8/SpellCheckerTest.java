@@ -10,45 +10,38 @@ import io.restassured.response.Response;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
 public class SpellCheckerTest {
 
     private AssertionService assertionService;
     private CheckTextService checkTextService;
 
     @BeforeClass
-    public void SetUp() throws IOException {
+    public void SetUp() {
         assertionService = new AssertionService();
         checkTextService = new CheckTextService();
 
     }
 
     @Test(dataProvider = "jsonDataForText", dataProviderClass = SpellCheckDataProvider.class)
-    public void checkTextTest(DataForText testData) throws IOException {
+    public void checkTextTest(DataForText testData) {
 
         Response response = checkTextService.createResponseForTextByParam(testData);
-        CheckTextDto[] actualResult = checkTextService.postForText(response);
+        CheckTextDto[] actualResult = checkTextService.parseResponse(response);
         assertionService
-                .checkCodeNumberForText(actualResult, testData);
-        assertionService
-                .checkRightWordArrayContainsExpectedText(actualResult, testData);
-        assertionService
+                .checkCodeNumberForText(actualResult, testData)
+                .checkRightWordArrayContainsExpectedText(actualResult, testData)
                 .onlyWordWithMistakeInResult(actualResult, testData);
-
     }
 
     @Test(dataProvider = "jsonDataForTexts", dataProviderClass = SpellCheckDataProvider.class)
-    public void checkTextsServiceTest(DataForTexts testData) throws IOException {
+    public void checkTextsServiceTest(DataForTexts testData) {
 
         Response response = checkTextService.createResponseForTextsByParam(testData);
         CheckTextDto[][] actualResult = checkTextService.postForTexts(response);
 
         assertionService.
-                numberOfResultFilesIsRight(actualResult, testData);
-
-        assertionService.
-                resultContainsRightWord(actualResult, testData);
+                numberOfResultFilesIsRight(actualResult, testData)
+                .resultContainsRightWord(actualResult,testData);
     }
 
 }
