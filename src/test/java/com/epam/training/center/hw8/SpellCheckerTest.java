@@ -26,7 +26,7 @@ public class SpellCheckerTest {
     public void checkTextTest(DataForText testData) {
 
         Response response = checkTextService.createResponseForTextByParam(testData);
-        CheckTextDto[] actualResult = checkTextService.parseResponse(response);
+        CheckTextDto[] actualResult = checkTextService.parseResponseForText(response);
         assertionService
                 .checkCodeNumberForText(actualResult, testData)
                 .checkRightWordArrayContainsExpectedText(actualResult, testData)
@@ -37,7 +37,7 @@ public class SpellCheckerTest {
     public void checkTextsServiceTest(DataForTexts testData) {
 
         Response response = checkTextService.createResponseForTextsByParam(testData);
-        CheckTextDto[][] actualResult = checkTextService.postForTexts(response);
+        CheckTextDto[][] actualResult = checkTextService.parseResponseForTexts(response);
 
         assertionService.
                 numberOfResultFilesIsRight(actualResult, testData)

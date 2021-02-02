@@ -12,45 +12,47 @@ public class SpellCheckDataProvider {
     private Object[][] dataProviderArray;
     private FileReader fr;
     private Gson gson;
-    private String filePath;
-    private DataForText[] textDataArr;
     private DataForTexts[] dataForTexts;
+    private DataForText[] textDataArr;
+    private static final String filePathToTextData = "src/test/resources/homework08/checkTextData.json";
+    private static final String filePathToTextsData = "src/test/resources/homework08/checkTextsData.json";
+
+    public Object[][] fillDataProv(String path){
+
+        gson = new Gson();
+            try {
+                fr = new FileReader(path);
+                if (path.equals(filePathToTextData)) {
+                    textDataArr = gson.fromJson(fr, DataForText[].class);
+                    dataProviderArray = new Object[textDataArr.length][1];
+                    for (int j = 0; j < textDataArr.length; j++) {
+                        dataProviderArray[j][0] = textDataArr[j];
+                    }
+                }
+                if (path.equals(filePathToTextsData)) {
+                    dataForTexts = gson.fromJson(fr, DataForTexts[].class);
+                    dataProviderArray = new Object[dataForTexts.length][1];
+                    for (int j = 0; j < dataForTexts.length; j++) {
+                        dataProviderArray[j][0] = dataForTexts[j];
+                    }
+                }
+            }catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            return dataProviderArray;
+    }
 
     @DataProvider
     public Object[][] jsonDataForText() {
 
-        gson = new Gson();
-        filePath = "src/test/resources/homework08/checkTextData.json";
-
-        try {
-            fr = new FileReader(filePath);
-            textDataArr = gson.fromJson(fr, DataForText[].class);
-            dataProviderArray = new Object[textDataArr.length][1];
-            for (int j = 0; j < textDataArr.length; j++) {
-                dataProviderArray[j][0] = textDataArr[j];
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        dataProviderArray = fillDataProv(filePathToTextData);
         return dataProviderArray;
     }
 
     @DataProvider
     public Object[][] jsonDataForTexts() {
 
-        gson = new Gson();
-        filePath = "src/test/resources/homework08/checkTextsData.json";
-
-        try {
-            fr = new FileReader(filePath);
-            dataForTexts = gson.fromJson(fr, DataForTexts[].class);
-            dataProviderArray = new Object[dataForTexts.length][1];
-            for (int j = 0; j < dataForTexts.length; j++) {
-                dataProviderArray[j][0] = dataForTexts[j];
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        dataProviderArray = fillDataProv(filePathToTextsData);
         return dataProviderArray;
     }
 }

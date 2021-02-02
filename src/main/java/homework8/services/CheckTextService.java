@@ -28,7 +28,7 @@ public class CheckTextService extends CommonService {
         return getWithParams(TEXTs_URI, map);
     }
 
-    public CheckTextDto[] parseResponse(Response response) {
+    public CheckTextDto[] parseResponseForText(Response response) {
         return response
                 .then()
                 .extract()
@@ -36,7 +36,7 @@ public class CheckTextService extends CommonService {
                 .as(CheckTextDto[].class);
     }
 
-    public CheckTextDto[][] postForTexts(Response response) {
+    public CheckTextDto[][] parseResponseForTexts(Response response) {
         return response
                 .then()
                 .extract()
